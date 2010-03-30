@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactoringKatas", "RefactoringKatas\RefactoringKatas.csproj", "{BB79D43E-1449-4BF6-AC7A-9B33CB75CEDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactoringKata_Tests", "RefactoringKata_Tests\RefactoringKata_Tests.csproj", "{D941C7CB-5C21-475E-8506-B13BF77FD13B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB79D43E-1449-4BF6-AC7A-9B33CB75CEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB79D43E-1449-4BF6-AC7A-9B33CB75CEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB79D43E-1449-4BF6-AC7A-9B33CB75CEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB79D43E-1449-4BF6-AC7A-9B33CB75CEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D941C7CB-5C21-475E-8506-B13BF77FD13B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D941C7CB-5C21-475E-8506-B13BF77FD13B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D941C7CB-5C21-475E-8506-B13BF77FD13B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D941C7CB-5C21-475E-8506-B13BF77FD13B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
