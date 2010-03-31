@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Replacing_conditional_logic_with_polymorphism\IPayingCustomer.cs" />
     <Compile Include="Replacing_conditional_logic_with_polymorphism\MovieRental.cs" />
+    <Compile Include="Replacing_conditional_logic_with_polymorphism\MovieRentalPriceCode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,7 +4,7 @@ using RefactoringKatas.Replacing_conditional_logic_with_polymorphism;
 
 namespace RefactoringKata_Tests.Replacing_conditional_logic_with_polymorphism
 {
-    namespace Given.a_customer.and_a_movie_rented_for_one_day.with_a_regular_price_code
+    namespace Given.a_customer.and_a_movie_rented_for_three_days_PLUS_two_days_past_due.with_a_childrens_price_code
     {
         [TestFixture]
         public class When_charging_a_customer_for_a_rental
@@ -12,13 +12,18 @@ namespace RefactoringKata_Tests.Replacing_conditional_logic_with_polymorphism
             [Test]
             public void It_should_charge_the_customer_the_appropriate_amount()
             {
-                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForTwoDays));
+                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForThreeDays));
             }
 
             private void Context()
             {
-                MovieRentalPeriod = 1;
-                ExpectedMovieRentalCostForTwoDays = 2;
+                RentalPeriod = 5;
+                var PastDueRentalPeriod = 2;
+                var NormalRentalPeriod = RentalPeriod - PastDueRentalPeriod;
+                var PerDayRentalFee = 1.5;
+                var LateFeePercentageIncrease = 1.5;
+                ExpectedMovieRentalCostForThreeDays = NormalRentalPeriod * PerDayRentalFee + PastDueRentalPeriod * PerDayRentalFee * LateFeePercentageIncrease;
+                PriceCode = MovieRentalPriceCode.Childrens;
             }
 
             private void Because()
@@ -32,7 +37,95 @@ namespace RefactoringKata_Tests.Replacing_conditional_logic_with_polymorphism
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod);
+                TheRental = new MovieRental(RentalPeriod, PriceCode);
+
+                Because();
+            }
+
+            private MovieRental TheRental;
+            private SecretShopperCustomer OurCustomer;
+            private double ExpectedMovieRentalCostForThreeDays;
+            private MovieRentalPriceCode PriceCode;
+            private int RentalPeriod;
+        }
+    }
+
+    namespace Given.a_customer.and_a_movie_rented_for_three_days_PLUS_one_day_past_due.with_a_childrens_price_code
+    {
+        [TestFixture]
+        public class When_charging_a_customer_for_a_rental
+        {
+            [Test]
+            public void It_should_charge_the_customer_the_appropriate_amount()
+            {
+                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForThreeDays));
+            }
+
+            private void Context()
+            {
+                RentalPeriod = 4;
+                var PastDueRentalPeriod = 1;
+                var NormalRentalPeriod = RentalPeriod - PastDueRentalPeriod;
+                var PerDayRentalFee = 1.5;
+                var LateFeePercentageIncrease = 1.5;
+                ExpectedMovieRentalCostForThreeDays = NormalRentalPeriod * PerDayRentalFee + PastDueRentalPeriod * PerDayRentalFee * LateFeePercentageIncrease;
+                PriceCode = MovieRentalPriceCode.Childrens;
+            }
+
+            private void Because()
+            {
+                TheRental.Charge(OurCustomer);
+            }
+
+            [TestFixtureSetUp]
+            public void Setup()
+            {
+                OurCustomer = new SecretShopperCustomer();
+                Context();
+
+                TheRental = new MovieRental(RentalPeriod, PriceCode);
+
+                Because();
+            }
+
+            private MovieRental TheRental;
+            private SecretShopperCustomer OurCustomer;
+            private double ExpectedMovieRentalCostForThreeDays;
+            private MovieRentalPriceCode PriceCode;
+            private int RentalPeriod;
+        }
+    }
+
+    namespace Given.a_customer.and_a_movie_rented_for_three_days.with_a_childrens_price_code
+    {
+        [TestFixture]
+        public class When_charging_a_customer_for_a_rental
+        {
+            [Test]
+            public void It_should_charge_the_customer_the_appropriate_amount()
+            {
+                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForThreeDays));
+            }
+
+            private void Context()
+            {
+                MovieRentalPeriod = 3;
+                ExpectedMovieRentalCostForThreeDays = MovieRentalPeriod * 1.5;
+                PriceCode = MovieRentalPriceCode.Childrens;
+            }
+
+            private void Because()
+            {
+                TheRental.Charge(OurCustomer);
+            }
+
+            [TestFixtureSetUp]
+            public void Setup()
+            {
+                OurCustomer = new SecretShopperCustomer();
+                Context();
+
+                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
 
                 Because();
             }
@@ -40,7 +133,174 @@ namespace RefactoringKata_Tests.Replacing_conditional_logic_with_polymorphism
             private MovieRental TheRental;
             private SecretShopperCustomer OurCustomer;
             private int MovieRentalPeriod;
-            private double ExpectedMovieRentalCostForTwoDays;
+            private double ExpectedMovieRentalCostForThreeDays;
+            private MovieRentalPriceCode PriceCode;
+        }
+    }
+
+    namespace Given.a_customer.and_a_movie_rented_for_one_day.with_a_childrens_price_code
+    {
+        [TestFixture]
+        public class When_charging_a_customer_for_a_rental
+        {
+            [Test]
+            public void It_should_charge_the_customer_the_appropriate_amount()
+            {
+                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForOneDay));
+            }
+
+            private void Context()
+            {
+                MovieRentalPeriod = 1;
+                ExpectedMovieRentalCostForOneDay = 1.5;
+                PriceCode = MovieRentalPriceCode.Childrens;
+            }
+
+            private void Because()
+            {
+                TheRental.Charge(OurCustomer);
+            }
+
+            [TestFixtureSetUp]
+            public void Setup()
+            {
+                OurCustomer = new SecretShopperCustomer();
+                Context();
+
+                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
+
+                Because();
+            }
+
+            private MovieRental TheRental;
+            private SecretShopperCustomer OurCustomer;
+            private int MovieRentalPeriod;
+            private double ExpectedMovieRentalCostForOneDay;
+            private MovieRentalPriceCode PriceCode;
+        }
+    }
+
+    namespace Given.a_customer.and_a_movie_rented_for_two_days.with_a_new_release_price_code
+    {
+        [TestFixture]
+        public class When_charging_a_customer_for_a_rental
+        {
+            [Test]
+            public void It_should_charge_the_customer_the_appropriate_amount()
+            {
+                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForOneDay));
+            }
+
+            private void Context()
+            {
+                MovieRentalPeriod = 2;
+                ExpectedMovieRentalCostForOneDay = MovieRentalPeriod * 3;
+                PriceCode = MovieRentalPriceCode.NewRelease;
+            }
+
+            private void Because()
+            {
+                TheRental.Charge(OurCustomer);
+            }
+
+            [TestFixtureSetUp]
+            public void Setup()
+            {
+                OurCustomer = new SecretShopperCustomer();
+                Context();
+
+                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
+
+                Because();
+            }
+
+            private MovieRental TheRental;
+            private SecretShopperCustomer OurCustomer;
+            private int MovieRentalPeriod;
+            private double ExpectedMovieRentalCostForOneDay;
+            private MovieRentalPriceCode PriceCode;
+        }
+    }
+
+    namespace Given.a_customer.and_a_movie_rented_for_one_day.with_a_new_release_price_code
+    {
+        [TestFixture]
+        public class When_charging_a_customer_for_a_rental
+        {
+            [Test]
+            public void It_should_charge_the_customer_the_appropriate_amount()
+            {
+                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForOneDay));
+            }
+
+            private void Context()
+            {
+                MovieRentalPeriod = 1;
+                ExpectedMovieRentalCostForOneDay = 3;
+                PriceCode = MovieRentalPriceCode.NewRelease;
+            }
+
+            private void Because()
+            {
+                TheRental.Charge(OurCustomer);
+            }
+
+            [TestFixtureSetUp]
+            public void Setup()
+            {
+                OurCustomer = new SecretShopperCustomer();
+                Context();
+
+                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
+
+                Because();
+            }
+
+            private MovieRental TheRental;
+            private SecretShopperCustomer OurCustomer;
+            private int MovieRentalPeriod;
+            private double ExpectedMovieRentalCostForOneDay;
+            private MovieRentalPriceCode PriceCode;
+        }
+    }
+
+    namespace Given.a_customer.and_a_movie_rented_for_one_day.with_a_regular_price_code
+    {
+        [TestFixture]
+        public class When_charging_a_customer_for_a_rental
+        {
+            [Test]
+            public void It_should_charge_the_customer_the_appropriate_amount()
+            {
+                Assert.That(OurCustomer.AmountCharged, Is.EqualTo(ExpectedMovieRentalCostForOneDay));
+            }
+
+            private void Context()
+            {
+                MovieRentalPeriod = 1;
+                ExpectedMovieRentalCostForOneDay = 2;
+            }
+
+            private void Because()
+            {
+                TheRental.Charge(OurCustomer);
+            }
+
+            [TestFixtureSetUp]
+            public void Setup()
+            {
+                OurCustomer = new SecretShopperCustomer();
+                Context();
+
+                TheRental = new MovieRental(MovieRentalPeriod, MovieRentalPriceCode.Regular);
+
+                Because();
+            }
+
+            private MovieRental TheRental;
+            private SecretShopperCustomer OurCustomer;
+            private int MovieRentalPeriod;
+            private double ExpectedMovieRentalCostForOneDay;
         }
     }
 
@@ -72,7 +332,7 @@ namespace RefactoringKata_Tests.Replacing_conditional_logic_with_polymorphism
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod);
+                TheRental = MovieRental.CreateMovieRentalWithRegularPriceCode(MovieRentalPeriod);
 
                 Because();
             }
@@ -118,7 +378,7 @@ namespace RefactoringKata_Tests.Replacing_conditional_logic_with_polymorphism
 
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod);
+                TheRental = MovieRental.CreateMovieRentalWithRegularPriceCode(MovieRentalPeriod);
 
                 Because();
             }
@@ -164,7 +424,7 @@ namespace RefactoringKata_Tests.Replacing_conditional_logic_with_polymorphism
 
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod);
+                TheRental = MovieRental.CreateMovieRentalWithRegularPriceCode(MovieRentalPeriod);
 
                 Because();
             }
