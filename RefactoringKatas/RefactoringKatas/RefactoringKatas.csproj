@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BB79D43E-1449-4BF6-AC7A-9B33CB75CEDC}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Replace_array_with_object\ILeaderBoardObserver.cs" />
+    <Compile Include="Replace_array_with_object\SportTeamLeaderBoard.cs" />
     <Compile Include="Replacing_conditional_logic_with_polymorphism\IPayingCustomer.cs" />
     <Compile Include="Replacing_conditional_logic_with_polymorphism\MovieRental.cs" />
     <Compile Include="Replacing_conditional_logic_with_polymorphism\MovieRentalPriceCode.cs" />
