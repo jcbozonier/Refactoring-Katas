@@ -37,9 +37,10 @@ namespace RefactoringKata_Tests.Refactored.Replace_array_with_object
                 var WorstTeamWins = "1";
                 var WorstTeamLosses = "24";
 
-                LeaderBoard = new SportTeamLeaderBoard(
-                    new Performance(BestTeamName, BestTeamWins, BestTeamLosses),
-                    new Performance(WorstTeamName, WorstTeamWins, WorstTeamLosses));
+                var bestTeamData = new Performance(BestTeamName, BestTeamWins, BestTeamLosses);
+                var worstTeamData = new Performance(WorstTeamName, WorstTeamWins, WorstTeamLosses);
+
+                LeaderBoard = new SportTeamLeaderBoard(bestTeamData, worstTeamData);
             }
 
             private void Because()
@@ -88,15 +89,26 @@ namespace RefactoringKata_Tests.Refactored.Replace_array_with_object
                 Assert.That(LeaderBoardObserver.TopTeamLossesDisplayed, Is.EqualTo(TeamLosses));
             }
 
+            private void Context()
+            {
+                TeamName = "Liverpool";
+                TeamWins = "15";
+                TeamLosses = "10";
+                var teamData = new Performance(TeamName, TeamWins, TeamLosses);
+                LeaderBoard = new SportTeamLeaderBoard(teamData);
+            }
+
+            private void Because()
+            {
+                LeaderBoard.DisplayFor(LeaderBoardObserver);
+            }
+
             [TestFixtureSetUp]
             public void Setup()
             {
                 LeaderBoardObserver = new ReportingLeaderBoardObserver();
-                TeamName = "Liverpool";
-                TeamWins = "15";
-                TeamLosses = "10";
-                LeaderBoard = new SportTeamLeaderBoard(new Performance(TeamName, TeamWins, TeamLosses));
-                LeaderBoard.DisplayFor(LeaderBoardObserver);
+                Context();
+                Because();
             }
 
             private SportTeamLeaderBoard LeaderBoard;
