@@ -27,21 +27,34 @@ namespace RefactoringKata_Tests.Refactored.Replace_array_with_object
                 Assert.That(LeaderBoardObserver.TopTeamLossesDisplayed, Is.EqualTo(BestTeamLosses));
             }
 
-            [TestFixtureSetUp]
-            public void Setup()
+            private void Context()
             {
-                LeaderBoardObserver = new ReportingLeaderBoardObserver();
                 BestTeamName = "Jetsons";
                 BestTeamWins = "20";
                 BestTeamLosses = "4";
 
-                string WorstTeamName = "No one";
+                var WorstTeamName = "No one";
                 var WorstTeamWins = "1";
                 var WorstTeamLosses = "24";
+
                 LeaderBoard = new SportTeamLeaderBoard(
                     new Performance(BestTeamName, BestTeamWins, BestTeamLosses),
                     new Performance(WorstTeamName, WorstTeamWins, WorstTeamLosses));
+            }
+
+            private void Because()
+            {
                 LeaderBoard.DisplayFor(LeaderBoardObserver);
+            }
+
+            [TestFixtureSetUp]
+            public void Setup()
+            {
+                LeaderBoardObserver = new ReportingLeaderBoardObserver();
+
+                Context();
+
+                Because();
             }
 
             private SportTeamLeaderBoard LeaderBoard;
