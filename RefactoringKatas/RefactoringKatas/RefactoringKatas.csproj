@@ -58,6 +58,10 @@
     <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\MovieRental.cs" />
     <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\MovieRentalPriceCode.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Refactored\Replace_array_with_object\NOT_YET_REFACTORED.txt" />
+    <Content Include="Refactored\Replacing_conditional_logic_with_polymorphism\NOT_YET_REFACTORED.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

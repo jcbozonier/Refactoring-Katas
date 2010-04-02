@@ -4,11 +4,20 @@ using System.Linq;
 
 namespace RefactoringKatas.Refactored.Replace_array_with_object
 {
+    public class Performance
+    {
+        public string[] _Data;
+
+        public Performance(string[] data)
+        {
+            _Data = data;
+        }
+    }
     public class SportTeamLeaderBoard
     {
-        private readonly string[][] TeamData;
+        private readonly Performance[] TeamData;
 
-        public SportTeamLeaderBoard(params string[][] teamData)
+        public SportTeamLeaderBoard(params Performance[] teamData)
         {
             TeamData = teamData;
         }
@@ -17,20 +26,20 @@ namespace RefactoringKatas.Refactored.Replace_array_with_object
         {
             var bestTeam = SelectBestTeam(TeamData);
 
-            leaderBoardObserver.DisplayTopTeamName(bestTeam[0]);
-            leaderBoardObserver.DisplayTopTeamWins(bestTeam[1]);
-            leaderBoardObserver.DisplayTopTeamLosses(bestTeam[2]);
+            leaderBoardObserver.DisplayTopTeamName(bestTeam._Data[0]);
+            leaderBoardObserver.DisplayTopTeamWins(bestTeam._Data[1]);
+            leaderBoardObserver.DisplayTopTeamLosses(bestTeam._Data[2]);
         }
 
-        private static string[] SelectBestTeam(IEnumerable<string[]> teamsToSelectFrom)
+        private static Performance SelectBestTeam(IEnumerable<Performance> teamsToSelectFrom)
         {
             return teamsToSelectFrom.First(leftTeam => teamsToSelectFrom.All(rightTeam => LeftTeamHasMoreWinsThanRightTeam(leftTeam, rightTeam)));
         }
 
-        private static bool LeftTeamHasMoreWinsThanRightTeam(IList<string> leftTeam, IList<string> rightTeam)
+        private static bool LeftTeamHasMoreWinsThanRightTeam(Performance leftTeam, Performance rightTeam)
         {
-            var leftWins = Int32.Parse(leftTeam[1]);
-            var rightWins = Int32.Parse(rightTeam[1]);
+            var leftWins = Int32.Parse(leftTeam._Data[1]);
+            var rightWins = Int32.Parse(rightTeam._Data[1]);
             return leftWins >= rightWins;
         }
     }
