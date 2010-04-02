@@ -39,8 +39,8 @@ namespace RefactoringKata_Tests.Refactored.Replace_array_with_object
                 var WorstTeamWins = "1";
                 var WorstTeamLosses = "24";
                 LeaderBoard = new SportTeamLeaderBoard(
-                    new Performance(new []{ BestTeamName, BestTeamWins, BestTeamLosses }),
-                    new Performance(new []{ WorstTeamName, WorstTeamWins, WorstTeamLosses }));
+                    new Performance(new[] { "n/a", BestTeamWins, BestTeamLosses }, BestTeamName),
+                    new Performance(new[] { "n/a", WorstTeamWins, WorstTeamLosses }, WorstTeamName));
                 LeaderBoard.DisplayFor(LeaderBoardObserver);
             }
 
@@ -79,15 +79,16 @@ namespace RefactoringKata_Tests.Refactored.Replace_array_with_object
             public void Setup()
             {
                 LeaderBoardObserver = new ReportingLeaderBoardObserver();
+                TeamName = "Liverpool";
                 TeamWins = "15";
                 TeamLosses = "10";
-                LeaderBoard = new SportTeamLeaderBoard(new Performance(new []{TeamName, TeamWins, TeamLosses}));
+                LeaderBoard = new SportTeamLeaderBoard(new Performance(new []{"n/a", TeamWins, TeamLosses}, TeamName));
                 LeaderBoard.DisplayFor(LeaderBoardObserver);
             }
 
             private SportTeamLeaderBoard LeaderBoard;
             private ReportingLeaderBoardObserver LeaderBoardObserver;
-            private string TeamName = "Liverpool";
+            private string TeamName;
             private string TeamWins;
             private string TeamLosses;
         }

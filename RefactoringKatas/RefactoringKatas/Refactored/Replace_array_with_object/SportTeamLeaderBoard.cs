@@ -8,10 +8,13 @@ namespace RefactoringKatas.Refactored.Replace_array_with_object
     {
         public string[] _Data;
 
-        public Performance(string[] data)
+        public Performance(string[] data, string name)
         {
+            Name = name;
             _Data = data;
         }
+
+        public string Name { get; private set; }
     }
     public class SportTeamLeaderBoard
     {
@@ -26,7 +29,7 @@ namespace RefactoringKatas.Refactored.Replace_array_with_object
         {
             var bestTeam = SelectBestTeam(TeamData);
 
-            leaderBoardObserver.DisplayTopTeamName(bestTeam._Data[0]);
+            leaderBoardObserver.DisplayTopTeamName(bestTeam.Name);
             leaderBoardObserver.DisplayTopTeamWins(bestTeam._Data[1]);
             leaderBoardObserver.DisplayTopTeamLosses(bestTeam._Data[2]);
         }
