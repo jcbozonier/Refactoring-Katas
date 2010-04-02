@@ -6,14 +6,11 @@ namespace RefactoringKatas.Refactored.Replace_array_with_object
 {
     public class Performance
     {
-        public string[] _Data;
-
-        public Performance(string[] data, string name, string wins, string losses)
+        public Performance(string name, string wins, string losses)
         {
             Name = name;
             Wins = wins;
             Losses = losses;
-            _Data = data;
         }
 
         public string Name { get; private set; }
