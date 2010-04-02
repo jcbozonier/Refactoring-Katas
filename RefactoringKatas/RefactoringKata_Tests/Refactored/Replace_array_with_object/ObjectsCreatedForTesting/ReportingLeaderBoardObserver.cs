@@ -1,6 +1,6 @@
-﻿using RefactoringKatas.Replace_array_with_object;
+﻿using RefactoringKatas.Refactored.Replace_array_with_object;
 
-namespace RefactoringKata_Tests.Replace_array_with_object.ObjectsCreatedForTesting
+namespace RefactoringKata_Tests.Refactored.Replace_array_with_object.ObjectsCreatedForTesting
 {
     public class ReportingLeaderBoardObserver : ILeaderBoardObserver
     {
