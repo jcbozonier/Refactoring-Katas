@@ -8,14 +8,19 @@ namespace RefactoringKatas.Refactored.Replace_array_with_object
     {
         public string[] _Data;
 
-        public Performance(string[] data, string name)
+        public Performance(string[] data, string name, string wins, string losses)
         {
             Name = name;
+            Wins = wins;
+            Losses = losses;
             _Data = data;
         }
 
         public string Name { get; private set; }
+        public string Wins { get; private set; }
+        public string Losses { get; private set; }
     }
+
     public class SportTeamLeaderBoard
     {
         private readonly Performance[] TeamData;
@@ -30,8 +35,8 @@ namespace RefactoringKatas.Refactored.Replace_array_with_object
             var bestTeam = SelectBestTeam(TeamData);
 
             leaderBoardObserver.DisplayTopTeamName(bestTeam.Name);
-            leaderBoardObserver.DisplayTopTeamWins(bestTeam._Data[1]);
-            leaderBoardObserver.DisplayTopTeamLosses(bestTeam._Data[2]);
+            leaderBoardObserver.DisplayTopTeamWins(bestTeam.Wins);
+            leaderBoardObserver.DisplayTopTeamLosses(bestTeam.Losses);
         }
 
         private static Performance SelectBestTeam(IEnumerable<Performance> teamsToSelectFrom)
@@ -41,8 +46,8 @@ namespace RefactoringKatas.Refactored.Replace_array_with_object
 
         private static bool LeftTeamHasMoreWinsThanRightTeam(Performance leftTeam, Performance rightTeam)
         {
-            var leftWins = Int32.Parse(leftTeam._Data[1]);
-            var rightWins = Int32.Parse(rightTeam._Data[1]);
+            var leftWins = Int32.Parse(leftTeam.Wins);
+            var rightWins = Int32.Parse(rightTeam.Wins);
             return leftWins >= rightWins;
         }
     }
