@@ -40,4 +40,16 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
 
         #endregion
     }
+
+    public class ChildrensPrice : IPrice
+    {
+        #region Implementation of IPrice
+
+        public MovieRentalPriceCode GetPriceCode()
+        {
+            return MovieRentalPriceCode.Childrens;
+        }
+
+        #endregion
+    }
 }

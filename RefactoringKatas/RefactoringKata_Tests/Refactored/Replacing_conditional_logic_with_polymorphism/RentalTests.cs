@@ -23,7 +23,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 var PerDayRentalFee = 1.5;
                 var LateFeePercentageIncrease = 1.5;
                 ExpectedMovieRentalCostForThreeDays = NormalRentalPeriod * PerDayRentalFee + PastDueRentalPeriod * PerDayRentalFee * LateFeePercentageIncrease;
-                PriceCode = MovieRentalPriceCode.Childrens;
+                ThePrice = new ChildrensPrice();
             }
 
             private void Because()
@@ -37,7 +37,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(RentalPeriod, new Movie(new Price(PriceCode)));
+                TheRental = new MovieRental(RentalPeriod, new Movie(ThePrice));
 
                 Because();
             }
@@ -45,8 +45,8 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             private MovieRental TheRental;
             private SecretShopperCustomer OurCustomer;
             private double ExpectedMovieRentalCostForThreeDays;
-            private MovieRentalPriceCode PriceCode;
             private int RentalPeriod;
+            private ChildrensPrice ThePrice;
         }
     }
 
@@ -69,7 +69,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 var PerDayRentalFee = 1.5;
                 var LateFeePercentageIncrease = 1.5;
                 ExpectedMovieRentalCostForThreeDays = NormalRentalPeriod * PerDayRentalFee + PastDueRentalPeriod * PerDayRentalFee * LateFeePercentageIncrease;
-                PriceCode = MovieRentalPriceCode.Childrens;
+                ThePrice = new ChildrensPrice();
             }
 
             private void Because()
@@ -83,7 +83,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(RentalPeriod, new Movie(new Price(PriceCode)));
+                TheRental = new MovieRental(RentalPeriod, new Movie(ThePrice));
 
                 Because();
             }
@@ -91,8 +91,8 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             private MovieRental TheRental;
             private SecretShopperCustomer OurCustomer;
             private double ExpectedMovieRentalCostForThreeDays;
-            private MovieRentalPriceCode PriceCode;
             private int RentalPeriod;
+            private ChildrensPrice ThePrice;
         }
     }
 
@@ -111,7 +111,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             {
                 MovieRentalPeriod = 3;
                 ExpectedMovieRentalCostForThreeDays = MovieRentalPeriod * 1.5;
-                PriceCode = MovieRentalPriceCode.Childrens;
+                ThePrice = new ChildrensPrice();
             }
 
             private void Because()
@@ -125,7 +125,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, new Movie(new Price(PriceCode)));
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(ThePrice));
 
                 Because();
             }
@@ -134,7 +134,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             private SecretShopperCustomer OurCustomer;
             private int MovieRentalPeriod;
             private double ExpectedMovieRentalCostForThreeDays;
-            private MovieRentalPriceCode PriceCode;
+            private ChildrensPrice ThePrice;
         }
     }
 
@@ -153,7 +153,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             {
                 MovieRentalPeriod = 1;
                 ExpectedMovieRentalCostForOneDay = 1.5;
-                PriceCode = MovieRentalPriceCode.Childrens;
+                ThePrice = new ChildrensPrice();
             }
 
             private void Because()
@@ -167,7 +167,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, new Movie(new Price(PriceCode)));
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(ThePrice));
 
                 Because();
             }
@@ -176,7 +176,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             private SecretShopperCustomer OurCustomer;
             private int MovieRentalPeriod;
             private double ExpectedMovieRentalCostForOneDay;
-            private MovieRentalPriceCode PriceCode;
+            private ChildrensPrice ThePrice;
         }
     }
 
