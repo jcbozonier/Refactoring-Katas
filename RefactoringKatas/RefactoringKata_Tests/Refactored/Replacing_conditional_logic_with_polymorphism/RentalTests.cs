@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_polymorphism.ObjectsCreatedForTesting;
 using RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorphism;
+using RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorphism.Pricing;
 
 namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_polymorphism
 {
