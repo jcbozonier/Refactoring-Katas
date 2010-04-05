@@ -1,3 +1,5 @@
+using System;
+
 namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorphism
 {
     public class Price : IPrice
@@ -13,5 +15,17 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
         {
             return PriceCode;
         }
+    }
+
+    public class RegularPrice : IPrice
+    {
+        #region Implementation of IPrice
+
+        public MovieRentalPriceCode GetPriceCode()
+        {
+            return MovieRentalPriceCode.Regular;
+        }
+
+        #endregion
     }
 }

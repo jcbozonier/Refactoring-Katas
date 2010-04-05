@@ -7,8 +7,7 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
 
         public static MovieRental CreateMovieRentalWithRegularPriceCode(int daysRented)
         {
-            var movieRentalPriceCode = MovieRentalPriceCode.Regular;
-            return new MovieRental(daysRented, new Movie(new Price(movieRentalPriceCode)));
+            return new MovieRental(daysRented, new Movie(new RegularPrice()));
         }
 
         public MovieRental(int daysRented, IMovie movie)
