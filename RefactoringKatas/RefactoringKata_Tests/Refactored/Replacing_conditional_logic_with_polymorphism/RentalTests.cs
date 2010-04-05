@@ -37,7 +37,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(RentalPeriod, PriceCode);
+                TheRental = new MovieRental(RentalPeriod, new Movie(PriceCode));
 
                 Because();
             }
@@ -83,7 +83,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(RentalPeriod, PriceCode);
+                TheRental = new MovieRental(RentalPeriod, new Movie(PriceCode));
 
                 Because();
             }
@@ -125,7 +125,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(PriceCode));
 
                 Because();
             }
@@ -167,7 +167,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(PriceCode));
 
                 Because();
             }
@@ -209,7 +209,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(PriceCode));
 
                 Because();
             }
@@ -251,7 +251,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, PriceCode);
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(PriceCode));
 
                 Because();
             }
@@ -292,7 +292,8 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, MovieRentalPriceCode.Regular);
+                MovieRentalPriceCode movieRentalPriceCode = MovieRentalPriceCode.Regular;
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(movieRentalPriceCode));
 
                 Because();
             }
