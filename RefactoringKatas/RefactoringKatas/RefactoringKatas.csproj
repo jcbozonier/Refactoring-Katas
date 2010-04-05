@@ -55,9 +55,13 @@
     <Compile Include="Refactored\Replace_array_with_object\ILeaderBoardObserver.cs" />
     <Compile Include="Refactored\Replace_array_with_object\Performance.cs" />
     <Compile Include="Refactored\Replace_array_with_object\SportTeamLeaderBoard.cs" />
+    <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\IMovie.cs" />
     <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\IPayingCustomer.cs" />
+    <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\IPrice.cs" />
+    <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\Movie.cs" />
     <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\MovieRental.cs" />
     <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\MovieRentalPriceCode.cs" />
+    <Compile Include="Refactored\Replacing_conditional_logic_with_polymorphism\Price.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Refactored\Replacing_conditional_logic_with_polymorphism\NOT_YET_REFACTORED.txt" />

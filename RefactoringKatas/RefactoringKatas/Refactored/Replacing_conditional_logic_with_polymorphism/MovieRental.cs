@@ -3,15 +3,15 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
     public class MovieRental
     {
         private readonly int DaysRented;
-        private Movie TheMovie;
+        private IMovie TheMovie;
 
         public static MovieRental CreateMovieRentalWithRegularPriceCode(int daysRented)
         {
             var movieRentalPriceCode = MovieRentalPriceCode.Regular;
-            return new MovieRental(daysRented, new Movie(movieRentalPriceCode));
+            return new MovieRental(daysRented, new Movie(new Price(movieRentalPriceCode)));
         }
 
-        public MovieRental(int daysRented, Movie movie)
+        public MovieRental(int daysRented, IMovie movie)
         {
             DaysRented = daysRented;
             TheMovie = movie;
@@ -68,26 +68,6 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
                         break;
                     }
             }
-        }
-    }
-
-    public interface IMovie
-    {
-        MovieRentalPriceCode GetPriceCode();
-    }
-
-    public class Movie : IMovie
-    {
-        private readonly MovieRentalPriceCode PriceCode;
-
-        public Movie(MovieRentalPriceCode priceCode)
-        {
-            PriceCode = priceCode;
-        }
-
-        public MovieRentalPriceCode GetPriceCode()
-        {
-            return PriceCode;
         }
     }
 }
