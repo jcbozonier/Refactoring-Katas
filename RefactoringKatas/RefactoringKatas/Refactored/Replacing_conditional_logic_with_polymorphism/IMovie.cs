@@ -4,7 +4,6 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
 {
     public interface IMovie
     {
-        MovieRentalPriceCode GetPriceCode();
         void Charge(IPayingCustomer customer, int daysRented);
     }
 }

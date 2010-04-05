@@ -12,14 +12,9 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
             PriceCode = price;
         }
 
-        public MovieRentalPriceCode GetPriceCode()
-        {
-            return PriceCode.GetPriceCode();
-        }
-
         public void Charge(IPayingCustomer customer, int DaysRented)
         {
-            switch (GetPriceCode())
+            switch (PriceCode.GetPriceCode())
             {
                 case MovieRentalPriceCode.Regular:
                     {
