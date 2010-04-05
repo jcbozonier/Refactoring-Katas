@@ -6,11 +6,6 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
     {
         #region Implementation of IPrice
 
-        public MovieRentalPriceCode GetPriceCode()
-        {
-            return MovieRentalPriceCode.Childrens;
-        }
-
         public void Charge(IPayingCustomer customer, int daysRented)
         {
             var rentalCostPerDay = 1.5;

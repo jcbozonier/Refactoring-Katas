@@ -5,7 +5,7 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
     public class MovieRental
     {
         private readonly int DaysRented;
-        private IMovie TheMovie;
+        private readonly IMovie TheMovie;
 
         public static MovieRental CreateMovieRentalWithRegularPriceCode(int daysRented)
         {

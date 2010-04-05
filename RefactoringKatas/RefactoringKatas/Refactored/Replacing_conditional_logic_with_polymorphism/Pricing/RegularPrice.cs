@@ -4,11 +4,6 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
 {
     public class RegularPrice : IPrice
     {
-        public MovieRentalPriceCode GetPriceCode()
-        {
-            return MovieRentalPriceCode.Regular;
-        }
-
         public void Charge(IPayingCustomer customer, int daysRented)
         {
             var rentalCostPerDay = 2;
