@@ -195,7 +195,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             {
                 MovieRentalPeriod = 2;
                 ExpectedMovieRentalCostForOneDay = MovieRentalPeriod * 3;
-                PriceCode = MovieRentalPriceCode.NewRelease;
+                ThePrice = new NewReleasePrice();
             }
 
             private void Because()
@@ -209,7 +209,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, new Movie(new Price(PriceCode)));
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(ThePrice));
 
                 Because();
             }
@@ -218,7 +218,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             private SecretShopperCustomer OurCustomer;
             private int MovieRentalPeriod;
             private double ExpectedMovieRentalCostForOneDay;
-            private MovieRentalPriceCode PriceCode;
+            private NewReleasePrice ThePrice;
         }
     }
 
@@ -237,7 +237,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             {
                 MovieRentalPeriod = 1;
                 ExpectedMovieRentalCostForOneDay = 3;
-                PriceCode = MovieRentalPriceCode.NewRelease;
+                ThePrice = new NewReleasePrice();
             }
 
             private void Because()
@@ -251,7 +251,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
                 OurCustomer = new SecretShopperCustomer();
                 Context();
 
-                TheRental = new MovieRental(MovieRentalPeriod, new Movie(new Price(PriceCode)));
+                TheRental = new MovieRental(MovieRentalPeriod, new Movie(ThePrice));
 
                 Because();
             }
@@ -260,7 +260,7 @@ namespace RefactoringKata_Tests.Refactored.Replacing_conditional_logic_with_poly
             private SecretShopperCustomer OurCustomer;
             private int MovieRentalPeriod;
             private double ExpectedMovieRentalCostForOneDay;
-            private MovieRentalPriceCode PriceCode;
+            private NewReleasePrice ThePrice;
         }
     }
 
