@@ -3,7 +3,7 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
     public class MovieRental
     {
         private readonly int DaysRented;
-        private readonly MovieRentalPriceCode PriceCode;
+        private Movie TheMovie;
 
         public static MovieRental CreateMovieRentalWithRegularPriceCode(int daysRented)
         {
@@ -13,12 +13,12 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
         public MovieRental(int daysRented, MovieRentalPriceCode movieRentalPriceCode)
         {
             DaysRented = daysRented;
-            PriceCode = movieRentalPriceCode;
+            TheMovie = new Movie(movieRentalPriceCode);
         }
 
         public void Charge(IPayingCustomer customer)
         {
-            switch(PriceCode)
+            switch (TheMovie.GetPriceCode())
             {
                 case MovieRentalPriceCode.Regular:
                     {
@@ -67,6 +67,26 @@ namespace RefactoringKatas.Refactored.Replacing_conditional_logic_with_polymorph
                         break;
                     }
             }
+        }
+    }
+
+    public interface IMovie
+    {
+        MovieRentalPriceCode GetPriceCode();
+    }
+
+    public class Movie : IMovie
+    {
+        private readonly MovieRentalPriceCode PriceCode;
+
+        public Movie(MovieRentalPriceCode priceCode)
+        {
+            PriceCode = priceCode;
+        }
+
+        public MovieRentalPriceCode GetPriceCode()
+        {
+            return PriceCode;
         }
     }
 }
